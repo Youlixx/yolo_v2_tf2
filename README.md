@@ -1,8 +1,8 @@
-# Object detection using YOLOv2
+# Digit detection using YOLOv2
 
-This implementation of [YOLOv2](https://arxiv.org/abs/1612.08242) was written for a tutorial session given at 
-Automatants, the Artificial Intelligence association of CentraleSupélec. A replay of the session is available
-[here](https://www.youtube.com/watch?v=8b2oOXX2uuU) (check it out if you can speak French!)
+![digits](https://drive.google.com/uc?export=view&id=1i9CwzKJ4iVLj73W_eDjDrLIltZ4AMV1p)
+
+This implementation of [YOLOv2](https://arxiv.org/abs/1612.08242) was written for a tutorial session given at Automatants, the Artificial Intelligence association of CentraleSupélec. A replay of the session is available [here](https://www.youtube.com/watch?v=8b2oOXX2uuU) (check it out if you can speak French!)
 
 The following packages are required
  - tensorflow
@@ -10,12 +10,9 @@ The following packages are required
 
 ## Dataset
 
-The dataset was synthetically generated, it consists of noisy images with random MNIST digits on it. The goal of the
-model is to detect the digits on the image using bounding boxes and classify them into 0-9. The digits are uniformly
-distributed over the whole dataset as it is in the original one.
+The dataset was synthetically generated, it consists of noisy images with random MNIST digits on it. The goal of the model is to detect the digits on the image using bounding boxes and classify them into 0-9. The digits are uniformly distributed over the whole dataset as it is in the original one.
 
-The dataset can be downloaded [here](https://drive.google.com/file/d/1f51LLoxgKkyPmR5YesOFmfmZs2DBpZES/view?usp=share_link).
-The files of the archive should be placed in a folder named `dataset` at the root of the project.
+The dataset can be downloaded [here](https://drive.google.com/file/d/1f51LLoxgKkyPmR5YesOFmfmZs2DBpZES/view?usp=share_link). The files of the archive should be placed in a folder named `dataset` at the root of the project.
 
 ## Train
 
@@ -30,6 +27,8 @@ with the following parameters
  - the learning rate
  - the number of prior used by the model
  - the scaling factor of the model (architecture dependent, should be 16 for the default architecture)
+
+The weights and priors used are saved into `weights`. A pre-trained model can be found [here](https://drive.google.com/file/d/1zZk16IYVg1nWby0jD_tANj0rggkkIHUR/view?usp=share_link)
 
 ## Test
 
@@ -59,7 +58,4 @@ with the following parameters
  - the detection threshold alpha
  - the NMS threshold beta
 
-Note: the current implementation of the mAP is not very accurate. Since the metric is computed across all possible alpha 
-values, the NMS should be recomputed each time which would very time expensive. Right now, a simple approximation of the
-mAP is given by the script; a more practical way of doing would be by sampling alpha with a fine enough step instead of
-using the continuous approach.
+Note: the current implementation of the mAP is not very accurate. Since the metric is computed across all possible alpha values, the NMS should be recomputed each time which would very time expensive. Right now, a simple approximation of the mAP is given by the script; a more practical way of doing would be by sampling alpha with a fixed step instead of using the continuous approach.
